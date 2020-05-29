@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Listado de Bebidas</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+
+
+<form novalidate #form="ngForm">
+  <div class="container margin">
+    <div class="row">
+
+      <div class="col-sm-4 col-lg-3">
+
+
+        <ng-autocomplete placeHolder="Seleccione categoria" [data]="categorie" [(ngModel)]="data.strCategory"
+          name="strCategory" [searchKeyword]="Keywordc" [itemTemplate]="itemTemplatec" (selected)='selectEvent($event)'
+          [notFoundTemplate]="notFoundTemplatec">
+        </ng-autocomplete>
+
+
+
+        <ng-template #itemTemplatec let-item>
+          <a [innerHTML]="item.strCategory"></a>
+        </ng-template>
+
+        <ng-template #notFoundTemplatec let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
+
+
+        <input type="hidden" class="form-control hidden" name="strCategory" [(ngModel)]="strCategory">
+
+
+      </div>
+
+      <div class="col-sm-4 col-lg-3">
+        <ng-autocomplete placeHolder="Seleccione bebida" [data]="glasses" (selected)='selectEventg($event)' [(ngModel)]="data.strGlass" name="strGlass"
+          [searchKeyword]="Keywordg" [itemTemplate]="itemTemplateg" [notFoundTemplate]="notFoundTemplateg">
+        </ng-autocomplete>
+
+
+        <ng-template #itemTemplateg let-item>
+          <a [innerHTML]="item.strGlass"></a>
+        </ng-template>
+
+        <ng-template #notFoundTemplateg let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
+
+        <input type="hidden" class="form-control hidden" name="strGlass" [(ngModel)]="strGlass">
+
+      </div>
+
+      <div class="col-sm-4 col-lg-3">
+
+        <select class="form-control" name="strIngredient1" [(ngModel)]="strIngredient1">
+          <option value="" selected>Selecione ingrediente</option>
+          <option *ngFor="let ingredient of ingredients" [value]="ingredient.strIngredient1">
+            {{ ingredient.strIngredient1 }}</option>
+        </select>
+      </div>
+
+      <div class="col-sm-4 col-lg-3">
+        <select class="form-control" name="strAlcoholic" [(ngModel)]="strAlcoholic">
+          <option value="" selected>Selecione nivel de alcohol</option>
+          <option *ngFor="let alcohols of alcohol" [value]="alcohols.strAlcoholic">{{ alcohols.strAlcoholic }}</option>
+        </select>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <th>Categoria</th>
+      <th>glasses</th>
+      <th>Ingrediente</th>
+      <th>Alcohol</th>
+      <th>Accion</th>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let drinks of drink | tableFilter: form.value">
+        <td>{{ drinks.strCategory }}</td>
+        <td>{{ drinks.strGlass }}</td>
+        <td>{{ drinks.strIngredient1 }}</td>
+        <td>{{ drinks.strAlcoholic }}</td>
+        <td> <button type="button" [routerLink]="['/drink', drinks.idDrink]" class="btn btn-info">Ver </button> </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+</form>

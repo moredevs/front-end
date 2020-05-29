@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Detalle de Bebida</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+
+<div class="card text-center">
+  <div class="card-header">
+    {{data.strCategory}} > {{data.strDrink}}
+  </div>
+  <div class="container"> 
+  <div class="card-body" *ngIf="!flag">
+    <h5 class="card-title">{{data.strDrink}}</h5>
+
+    
+    <div class="gravatar" >
+      <ngx-skeleton-loader          appearance="rectangule"
+        [theme]="{ width: '400px', height: '400px' }"     >
+      </ngx-skeleton-loader>
+    </div>
+
+    <div class="item">
+      <!-- Disables the animation -->
+      <ngx-skeleton-loader animation="false"></ngx-skeleton-loader>
+      <!-- Uses `progress` as animation -->
+      <ngx-skeleton-loader animation="progress"></ngx-skeleton-loader>
+      <ngx-skeleton-loader></ngx-skeleton-loader>
+      <!-- Uses `pulse` as animation -->
+      <ngx-skeleton-loader animation="pulse"></ngx-skeleton-loader>
+    </div>
+  </div>
+  <div class="card-body" *ngIf="flag">
+  <img src="{{data.strDrinkThumb}} "class="img" >
+</div>
+
+</div>
+<div class="container" *ngIf="flag">
+  <h5 class="card-title">Instrucciones</h5>
+ <p class="text-left"> {{data.strInstructions}}</p>
+ <p class="text-left"> {{data.strInstructionsDE}}</p>
+ 
+ <h5 class="card-title">Ingredientes</h5>
+<p class="text-left"> - {{data.strIngredient1}}</p>
+<p class="text-left"> - {{data.strIngredient2}}</p>
+<p class="text-left"> - {{data.strIngredient3}}</p>
+<p class="text-left"> - {{data.strIngredient4}}</p>
+</div></div>
