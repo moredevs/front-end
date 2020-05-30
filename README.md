@@ -34,3 +34,5 @@ Para generar la imagen sera: docker build . -t front-end:1.0
 Una vez finalizado los pasos se procedera a correr la imagen
 
 Para ejecutar en el contenedor se ejecutaria el siguiente comando:  docker -d -p 80:80 front-end:1.0
+
+Ahora se podra ver reflejado en localhost  http://localhost
