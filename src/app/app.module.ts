@@ -3,10 +3,13 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AsideComponent } from './layout/aside/aside.component';
 import { ServiceService } from '../app/layout/service.service';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+ 
+import { CommonModule } from '@angular/common';
+ 
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    ReactiveFormsModule,
+ 
+    CommonModule
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent], 

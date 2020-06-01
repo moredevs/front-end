@@ -12,7 +12,7 @@ export class ServiceService {
   constructor(private httpclient: HttpClient, private router:Router) { }
 
   public  getList(){
-    return this.httpclient.get<Drink[]>(`${this.API}/api/json/v1/1/search.php?s=margarita`)
+    return this.httpclient.get<any[]>(`${this.API}/api/json/v1/1/search.php?s=margarita`)
   }
 
   public  getCategories(){
